@@ -1,0 +1,22 @@
+<div>
+  <input type="text" [(ngModel)]="identificador" placeholder="Ingrese un identificador">
+  <button (click)="buscar()">Buscar</button>
+</div>
+
+<div *ngIf="resultado">
+  <h2>Información del Cliente</h2>
+  <p>Nombre: {{ resultado.nombre }}</p>
+  <p>Apellido: {{ resultado.apellido }}</p>
+  <p>Edad: {{ resultado.edad }}</p>
+  <p>Numero de Cuenta: {{ resultado.numeroCuenta }}</p>
+  <p>Fecha creacion cuenta: {{ resultado.fechaCreacionCuenta }}</p>
+  <p>Saldo: {{ resultado.saldoCuenta }}</p>
+  <h2>Movimientos</h2>
+  <ul>
+    <li *ngFor="let movimiento of resultado.movimientos">
+      {{ movimiento.tipo }} - Monto: {{ movimiento.monto }} - Descripción: {{ movimiento.descripcion }}
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="error">
